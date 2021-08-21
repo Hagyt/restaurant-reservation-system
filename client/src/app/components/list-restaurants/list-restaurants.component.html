@@ -1,1 +1,38 @@
-<p>list-restaurants works!</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="title">RESTAURANTES</span>
+                    <button class="btn btn-primary float-end" routerLink="/create-restaurant">+</button>
+                    <table *ngIf="restaurantsArray.length > 0" class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descricion</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Ciudad</th>
+                            <th scope="col">Foto</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let restaurant of restaurantsArray">
+                            <td>{{ restaurant.name }}</td>
+                            <td>{{ restaurant.description }}</td>
+                            <td>{{ restaurant.address }}</td>
+                            <td>{{ restaurant.city }}</td>
+                            <td>{{ restaurant.photo }}</td>
+                            <td>
+                                <i [routerLink]="['/edit-restaurant', restaurant._id]" class="fas fa-edit"></i>
+                                <i (click)="deleteRestaurant(restaurant._id)" class="fas fa-trash"></i>
+                            </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                      <h5 *ngIf="restaurantsArray.length == 0">No hay restaurantes que mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
