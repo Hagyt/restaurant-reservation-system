@@ -13,7 +13,8 @@
                             <th scope="col">Direccion</th>
                             <th scope="col">Ciudad</th>
                             <th scope="col">Foto</th>
-                            <th scope="col"></th>
+                            <th scope="col">Reservar</th>
+                            <th scope="col">Gestion</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -23,9 +24,13 @@
                             <td>{{ restaurant.address }}</td>
                             <td>{{ restaurant.city }}</td>
                             <td>{{ restaurant.photo }}</td>
+                            <td><i [routerLink]="['/create-reservation', restaurant._id]"
+                                  class="far fa-calendar-alt"></i></td>
                             <td>
-                                <i [routerLink]="['/edit-restaurant', restaurant._id]" class="fas fa-edit"></i>
-                                <i (click)="deleteRestaurant(restaurant._id)" class="fas fa-trash"></i>
+                                <i [routerLink]="['/edit-restaurant', restaurant._id]"
+                                  class="fas fa-edit"></i>
+                                <i (click)="deleteRestaurant(restaurant._id)"
+                                  class="fas fa-trash"></i>
                             </td>
                         </tr>
                         </tbody>

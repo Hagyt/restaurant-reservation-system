@@ -1,0 +1,54 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <span class="title">Reservar</span>
+                    </div>
+                    <form class="mt-4" [formGroup]="reservationForm" (ngSubmit)="createReservation()">
+                        <div class="mb-3 row mt-4" >
+                            <label for="reservationDate" class="col-sm-3 col-form-label">Fecha*</label>
+                            <div class="col-sm-9">
+                                <input type="date" (change)="getAvailableTables()"
+                                    formControlName="reservationDate" class="form-control" >
+                                <div class="text-danger mt-1"
+                                    *ngIf="reservationForm.get('reservationDate')?.hasError('required')
+                                    && reservationForm.get('reservationDate')?.touched">
+                                    <span>La fecha es obligatoria</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row mt-4" >
+                            <label for="table" class="col-sm-3 col-form-label">Mesa*</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" formControlName="table">
+                                    <option value="" selected>
+                                        <span *ngIf="availableTables.length > 0; else noTables">
+                                            Seleccione una mesa
+                                        </span>
+                                        <ng-template #noTables>
+                                            No hay mesas disponibles
+                                        </ng-template>
+                                    </option>
+                                    <option *ngFor="let table of availableTables"
+                                        [ngValue]="table">{{ table }}</option>
+                                </select>
+                                <div class="text-danger mt-1"
+                                    *ngIf="reservationForm.get('table')?.hasError('required')
+                                    && reservationForm.get('table')?.touched">
+                                    <span>La mesa es obligatoria</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-around mt-4">
+                            <button class="btn btn-secondary btn-lg" routerLink="/">Volver</button>
+                            <button type="submit" [disabled]="reservationForm.invalid"
+                                class="btn btn-success btn-lg">Reservar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

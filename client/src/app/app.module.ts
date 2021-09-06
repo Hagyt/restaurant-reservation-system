@@ -10,12 +10,18 @@ import { AppComponent } from './app.component';
 import { AppRoutingProviders, Routing } from './app.routing';
 import { CreateRestaurantComponent } from './components/create-restaurant/create-restaurant.component';
 import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
+import { CreateReservationComponent } from './components/create-reservation/create-reservation.component';
+import { ListReservationsComponent } from './components/list-reservations/list-reservations.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateRestaurantComponent,
-    ListRestaurantsComponent
+    ListRestaurantsComponent,
+    CreateReservationComponent,
+    ListReservationsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

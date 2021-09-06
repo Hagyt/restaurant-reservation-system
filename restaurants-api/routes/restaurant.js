@@ -1,14 +1,19 @@
 'use strict'
 
-// Restaurant routes
 const express = require('express');
 const router = express.Router();
 let RestaurantController = require('../controllers/restaurant');
 
-router.post('/save', RestaurantController.saveRestaurant);
-router.get('/', RestaurantController.getRestuarants);
-router.get('/:id', RestaurantController.getRestaurant);
-router.put('/update/:id', RestaurantController.updateRestaurant);
-router.delete('/delete/:id', RestaurantController.deleteRestaurant);
+// Restaurant
+router.get('/restaurants', RestaurantController.getRestuarants);
+router.get('/restaurants/:id', RestaurantController.getRestaurant);
+router.post('/restaurants', RestaurantController.saveRestaurant);
+router.put('/restaurants/:id', RestaurantController.updateRestaurant);
+router.delete('/restaurants/:id', RestaurantController.deleteRestaurant);
+
+// Reservation
+router.get('/reservations', RestaurantController.getReservations);
+router.get('/reservations/:id', RestaurantController.getReservationsByRestaurant);
+router.post('/reservations/:id', RestaurantController.saveReservation);
 
 module.exports = router;
